@@ -51,7 +51,7 @@ class Event(db.Model):
 class EventSchedule(db.Model):
     __tablename__ = "event_schedule"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    event_id = db.Column(db.Integer, db.ForeignKey("events.id"), nullable=False)
+    event_id = db.Column(db.Integer, db.ForeignKey("event.id"), nullable=False)
     start_date = db.Column(db.DateTime, nullable=False)
     end_date = db.Column(db.DateTime, nullable=False)
     content = db.Column(db.Text, nullable=True)

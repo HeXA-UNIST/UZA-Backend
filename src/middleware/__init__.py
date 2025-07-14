@@ -5,6 +5,8 @@ from config import Config
 
 
 def create_app(config: Config):
+    from src.model.event_routes import event_bp
+    from src.model.auth_routes import auth_bp
     app = Flask(__name__)
     app.config.from_object(config)
 
@@ -17,7 +19,10 @@ def create_app(config: Config):
     mail.init_app(app)
     admin.init_app(app)
 
+    app.register_blueprint(event_bp)
+    app.register_blueprint(auth_bp)
+
     with app.app_context():
-        db.create_all()
+        pass
 
     return app, socketio
